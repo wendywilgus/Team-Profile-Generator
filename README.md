@@ -187,3 +187,20 @@ You are required to submit the following for review:
 
 ---
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
+
+
+## Usage
+The application will be invoked by using the following command:
+node index.js
+
+## Resources
+* [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4).
+
+* [Jest package](https://www.npmjs.com/package/jest) for a suite of unit tests.
+
+* [JavaScript Classes](https://www.w3schools.com/js/js_classes.asp)
+
+* [JavaScript Class Syntax](https://www.w3schools.com/js/js_classes.asp)
+
+* [Super Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super)
