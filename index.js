@@ -109,16 +109,16 @@ const employeeBasic = [{
 //Function to begin app
 const init = () => {}
 
-// function to generate HTML page  
-const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err => {
-        // if there is an error 
-        if (err) {
-            console.log(err);
-            return;
-        // if success
-        } else {
-            console.log("Success! Your team profile has been created! Please open the index.html file.")
-        }
-    })
-}; 
+// // function to generate HTML page  
+// const writeFile = data => {
+//     fs.writeFile('./dist/index.html', data, err => {
+//         // if there is an error 
+//         if (err) {
+//             console.log(err);
+//             return;
+//         // if success
+//         } else {
+//             console.log("Success! Your team profile has been created! Please open the index.html file.")
+//         }
+//     })
+// }; 
