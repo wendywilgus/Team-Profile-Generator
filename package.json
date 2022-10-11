@@ -1,0 +1,29 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "index.js",
+  "module": "main.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wendywilgus/Team-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wendywilgus/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/wendywilgus/Team-Profile-Generator#readme",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "inquirer": "^9.1.3"
+  },
+  "keywords": []
+}

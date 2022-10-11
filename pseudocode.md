@@ -2,7 +2,7 @@
 
 js file using inquirer.js to prompt team members about their information in command line.
     Questions: 
-        The first class is an Employee parent class with the following properties and methods:
+        The first class is an Employee parent class with the following properties and methods: (READ ABOUT SUPER IN LINK BELOW)
             name
             id
                 validation to ensure that user input is in the proper format.
@@ -68,7 +68,7 @@ HTML
     red background
 
     body: white background
-    Cards: blue top with Name on first line, title on second line, populate icon to match job title
+    Cards: blue top with Name on first line, title on second line, populate icon to match job title (FONT AWESOME)
         gray main
         white box for each element (3)
 
