@@ -5,26 +5,25 @@ const validator = require("email-validator");
 
 const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
-const Intern = require("./lib/intern");
-const Manager = require("./lib/manager");
+const Intern = require("./lib/intern.js");
+const Manager = require("./lib/manager.js");
 
 
 //link to script for generating HTML page
 const generateHTML = require('./src/generateHTML');
 
-//function to begin questions
-function beginPrompt()  {
-    const employeeBasic = [{
-        type: 'input',
-        message: 'What is your name?',
-        name: 'name',
-        validate: nameEntry =>  {
-            if (nameEntry)  {
-                return true;
-            } else{
-                console.log("Please enter a name for this employee.")
-                return false;
-            }
+//begin questions
+const employeeBasic = [{
+    type: 'input',
+    message: 'What is your name?',
+    name: 'name',
+    validate: nameEntry =>  {
+        if (nameEntry)  {
+            return true;
+        } else{
+            console.log("Please enter a name for this employee.")
+            return false;
+        }
         }
     }, 
     {
@@ -45,8 +44,8 @@ function beginPrompt()  {
         message: 'What is your email address?',
         name: 'email',
         validate: validator.validate("test@email.com"), // true
-    }
-    
+    },
+
     {   
         type: 'list',
         message: 'What is the title of this employee?',
@@ -56,7 +55,8 @@ function beginPrompt()  {
             'Intern',
         ],
         name: 'title',
-    }];
+    }
+];
 
     managerPrompt = [
         {
@@ -106,10 +106,8 @@ function beginPrompt()  {
         }
     ]
 
-    return inquirer
-        .prompt(employeeBasic);
-}
-
+//Function to begin app
+const init = () => {}
 
 // function to generate HTML page  
 const writeFile = data => {
