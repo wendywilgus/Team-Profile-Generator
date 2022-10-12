@@ -45,6 +45,7 @@ seperate file generate.js
         Class Manager
             officeNumber
             getRole()—overridden to return 'Manager'
+            icon code 
         
         Class Engineer
             github—GitHub username
@@ -71,6 +72,8 @@ HTML
     Cards: blue top with Name on first line, title on second line, populate icon to match job title (FONT AWESOME)
         gray main
         white box for each element (3)
+        rounded edges
+        drop shadow
 
 * Uses the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4).
 

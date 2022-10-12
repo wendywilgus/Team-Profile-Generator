@@ -13,9 +13,10 @@ const Manager = require("./lib/manager.js");
 const generateHTML = require('./src/generateHTML');
 
 
-//Function to begin app
-init = () => {
-    const employeeBasic = [{
+//Questions to begin app
+questions = ()  =>   {
+const employeeBasic = 
+    [{
         type: 'input',
         message: 'What is your name?',
         name: 'name',
@@ -28,39 +29,36 @@ init = () => {
             }
             }
         }, 
-        {
-            type: 'input',
-            message: 'What is your ID?',
-            name: 'ID',
-            validate: idValidation =>  {
-                if (!isNaN(idValidation))  { //possibly write as (!isNaN(parseInt(idValidation)))
-                    return true;
-                } else{
-                    console.log("Please enter a numeric value for the employee's ID.")
-                    return false;
+    {
+        type: 'input',
+        message: 'What is your ID?',
+        name: 'ID',
+        validate: idValidation =>  {
+            if (!isNaN(idValidation))  { //possibly write as (!isNaN(parseInt(idValidation)))
+                return true;
+            } else{
+                console.log("Please enter a numeric value for the employee's ID.")
+                return false;
                 }
             }
-        },  
-        {   
-            type: 'input',
-            message: 'What is your email address?',
-            name: 'email',
-            validate: validator.validate("test@email.com"), // true
-        },
-
-        {   
-            type: 'list',
-            message: 'What is the title of this employee?',
-            choices: [
-                'Manager',
-                'Engineer',
-                'Intern',
-            ],
-            name: 'title',
-        }
+    },  
+    {   
+        type: 'input',
+        message: 'What is your email address?',
+        name: 'email',
+        validate: validator.validate("test@email.com"), // true
+    },
+    {   
+        type: 'list',
+        message: 'What is the title of this employee?',
+        choices: [
+            'Manager',
+            'Engineer',
+            'Intern',
+        ],
+        name: 'title',
+    }
     ];
-    return inquirer.prompt(employeeBasic);
-}
 
 manager = ()  =>    {
     managerPrompt = [{
@@ -76,8 +74,7 @@ manager = ()  =>    {
                 }
             }
         }];
-    return inquirer.prompt(employeeBasic);
-}
+    };
 
 engineer = () =>    {
     engineerPrompt = [{
@@ -93,8 +90,7 @@ engineer = () =>    {
                 }
             }
         }];
-    return inquirer.prompt(employeeBasic);
-}
+};
     
 intern = () =>  {
     internPrompt = [{
@@ -110,7 +106,7 @@ intern = () =>  {
                 }
             }
         }];
-    return inquirer.prompt(employeeBasic);
+}
 }
         
 
