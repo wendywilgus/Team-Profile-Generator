@@ -1,6 +1,6 @@
 //required Node modules
-const inquirer = import('inquirer');
-const fs = require('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
 const validator = require("email-validator");
 
 const Employee = require("./lib/employee");
@@ -8,15 +8,13 @@ const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern.js");
 const Manager = require("./lib/manager.js");
 
-
 //link to script for generating HTML page
-const generateHTML = require('./src/generateHTML');
+const generateHTML = require("./src/generateHTML");
 
 
 //Questions to begin app
-questions = ()  =>   {
-const employeeBasic = 
-    [{
+function createEmployee() {
+    const employeeBasic = [{
         type: 'input',
         message: 'What is your name?',
         name: 'name',
@@ -58,9 +56,10 @@ const employeeBasic =
         ],
         name: 'title',
     }
-    ];
+    ]
+    return inquirer.prompt(createEmployee);
 
-manager = ()  =>    {
+    function createManager() {
     managerPrompt = [{
             type: 'input',
             message: 'What is the office number for the manager?',
@@ -74,9 +73,10 @@ manager = ()  =>    {
                 }
             }
         }];
+        return inquirer.prompt(createEmployee);
     };
 
-engineer = () =>    {
+    function createEngineer() {
     engineerPrompt = [{
             type: 'input',
             message: 'What is their Github username?',
@@ -90,9 +90,10 @@ engineer = () =>    {
                 }
             }
         }];
+        return inquirer.prompt(createEmployee);
 };
     
-intern = () =>  {
+    function createIntern() {
     internPrompt = [{
             type: 'input',
             message: 'What school does the intern attend?',
@@ -106,7 +107,11 @@ intern = () =>  {
                 }
             }
         }];
+        return inquirer.prompt(createEmployee);
 }
 }
-        
 
+async function addEmployee()    {
+    let employeeArray = [];
+    
+}
