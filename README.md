@@ -204,3 +204,5 @@ node index.js
 * [JavaScript Class Syntax](https://www.w3schools.com/js/js_classes.asp)
 
 * [Super Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super)
+
+* [JavaScript RegExp Reference](https://www.w3schools.com/jsref/jsref_obj_regexp.asp)

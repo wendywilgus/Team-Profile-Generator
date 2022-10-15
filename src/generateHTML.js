@@ -51,3 +51,12 @@ const writeIntern = intern => {
     template = replacePlaceholders(template, "school", intern.getSchool());
     return template;
 }
+
+const newFile = html => {
+    const template = fs.readFileSync(path.resolve(cards, "main.html"), "utf8");
+    return replacePlaceholders = (template, placeholder, value) => {
+        const pattern = new RegExp("{{ " + placeholder + "}}", "gm");
+        return template.replace(pattern, value);
+
+    }
+}
