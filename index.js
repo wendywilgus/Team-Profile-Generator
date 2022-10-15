@@ -1,6 +1,9 @@
 //required Node modules
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require("path");
+const newFile = path.resolve(__dirname, "dist");
+const filePath = path.join(newFile, "index.html");
 
 
 const Employee = require("./lib/employee");
@@ -158,6 +161,9 @@ const newEmployee = async (array) => {
         addEmployee();
       }
       else if (await createNew === false)  {
+        if (!fs.existsSync(newFile))  {
+          fs.mkdirSync(newFile)
+        }
         fs.writeFile(fileName, generateHTML(array), (error)  =>  {
           if (error) throw error;
           console.log("Your Team Profile has been created! Please open the index.html file in the 'dist' folder.")
