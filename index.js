@@ -9,9 +9,9 @@ const Manager = require("./lib/manager.js");
 
 //link to script for generating HTML page
 const generateHTML = require("./src/generateHTML");
-
+let employeeArray = [];
 //Questions to begin app
-function createEmployee() {
+
   const employeeBasic = [
     {
       type: "input",
@@ -44,7 +44,6 @@ function createEmployee() {
       type: "input",
       message: "What is your email address?",
       name: "email",
-      validate: validator.validate("test@email.com"), // true
     },
     {
       type: "list",
@@ -53,9 +52,7 @@ function createEmployee() {
       name: "title",
     },
   ];
-  return inquirer.prompt(createEmployee);
-
-  function createManager() {
+ 
     managerPrompt = [
       {
         type: "input",
@@ -71,10 +68,7 @@ function createEmployee() {
         },
       },
     ];
-    return inquirer.prompt(createEmployee);
-  }
 
-  function createEngineer() {
     engineerPrompt = [
       {
         type: "input",
@@ -90,10 +84,7 @@ function createEmployee() {
         },
       },
     ];
-    return inquirer.prompt(createEmployee);
-  }
 
-  function createIntern() {
     internPrompt = [
       {
         type: "input",
@@ -109,35 +100,49 @@ function createEmployee() {
         },
       },
     ];
-    return inquirer.prompt(createEmployee);
-  }
-}
 
-async function addEmployee() {
-  let employeeArray = [];
-  const promise = new Promise((resolve, reject) => {
-    createEmployee().then(function ({ name, ID, email, title }) {
+
+const addEmployee = async () => {
+  await inquirer.promp(employeeBasic)
+    .then((response)  =>  {
+      let name  = response.name;
+      let id = response.id;
+      let email = response.email;
+      let title = response.title;
+      let officeNumber;
+      let github;
+      let school;
+
       if (title === "Manager") {
-        createManager().then(function ({ officeNumber }) {
-          this.employee = new Manager(name, id, email, officeNumber, title);
+        inquirer.prompt(managerPrompt).then((response)  =>  {
+          officeNumber = response.officeNumber;
+          let employee = new Manager(name, id, email, officeNumber, title);
           employeeArray.push(employee);
-          resolve("done");
+          addEmployee(employeeArray);
         });
       } else if (title === "Engineer") {
-        createEngineer().then(function ({ github }) {
-          this.employee = new Engineer(name, id, email, github, title);
+        inquirer.prompt(engineerPrompt).then((response)  =>  {
+          github = response.github;
+          let employee = new Engineer(name, id, email, github, title);
           employeeArray.push(employee);
-          resolve("done");
+          addEmployee(employeeArray);
         });
       } else if (title === "Intern") {
-        createIntern().then(function ({ school }) {
-          this.employee = new Intern(name, id, email, school, title);
+        inquirer.prompt(internPrompt).then((response)  =>  {
+          school = response.school;
+          let employee = new Intern(name, id, email, school, title);
           employeeArray.push(employee);
-          resolve("done");
-        });
-      }
-    });
+          addEmployee(employeeArray);
+      });
+    }
   });
-  const result = await promise;
+};
+
+  
+
+function createEmployee() {
+  inquirer.prompt(employeeBasic)
+  .then((data)  => addEmployee());
 }
-// addEmployee();
+createEmployee();
+addEmployee();
