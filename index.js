@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+
 const Employee = require("./lib/employee");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern.js");
@@ -101,9 +102,13 @@ let employeeArray = [];
       },
     ];
 
+const init = () =>  {
+  console.log("Please follow the prompts to create your team. ")
+  addEmployee()
+};
 
 const addEmployee = async () => {
-  await inquirer.promp(employeeBasic)
+  await inquirer.prompt(employeeBasic)
     .then((response)  =>  {
       let name  = response.name;
       let id = response.id;
@@ -118,21 +123,21 @@ const addEmployee = async () => {
           officeNumber = response.officeNumber;
           let employee = new Manager(name, id, email, officeNumber, title);
           employeeArray.push(employee);
-          addEmployee(employeeArray);
+          newEmployee(employeeArray);
         });
       } else if (title === "Engineer") {
         inquirer.prompt(engineerPrompt).then((response)  =>  {
           github = response.github;
           let employee = new Engineer(name, id, email, github, title);
           employeeArray.push(employee);
-          addEmployee(employeeArray);
+          newEmployee(employeeArray);
         });
       } else if (title === "Intern") {
         inquirer.prompt(internPrompt).then((response)  =>  {
           school = response.school;
           let employee = new Intern(name, id, email, school, title);
           employeeArray.push(employee);
-          addEmployee(employeeArray);
+          newEmployee(employeeArray);
       });
     }
   });
@@ -140,9 +145,18 @@ const addEmployee = async () => {
 
   
 
-function createEmployee() {
-  inquirer.prompt(employeeBasic)
-  .then((data)  => addEmployee());
+const newEmployee = async (array) => {
+  await inquirer.prompt(
+    { type: "confirm",//boolean yes or no
+      name: "newEmployee",
+      message: "Do you want to add a new employee?",
+
+    }).then(async(response) =>  {
+      let createNew = response.newEmployee;
+      if (await createNew === true) {
+        addEmployee();
+      }
+      else if (await createNew === false) {}
+    });
 }
-createEmployee();
-addEmployee();
+init();
