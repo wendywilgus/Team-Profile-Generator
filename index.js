@@ -16,7 +16,7 @@ let employeeArray = [];
   const employeeBasic = [
     {
       type: "input",
-      message: "What is your name?",
+      message: "What is the employee's name?",
       name: "name",
       validate: (nameEntry) => {
         if (nameEntry) {
@@ -29,7 +29,7 @@ let employeeArray = [];
     },
     {
       type: "input",
-      message: "What is your ID?",
+      message: "What is the employee's ID?",
       name: "ID",
       validate: (idValidation) => {
         if (!isNaN(idValidation)) {
@@ -43,12 +43,12 @@ let employeeArray = [];
     },
     {
       type: "input",
-      message: "What is your email address?",
+      message: "What is the employee's email address?",
       name: "email",
     },
     {
       type: "list",
-      message: "What is the title of this employee?",
+      message: "What is the employee's title?",
       choices: ["Manager", "Engineer", "Intern"],
       name: "title",
     },
@@ -57,13 +57,14 @@ let employeeArray = [];
     managerPrompt = [
       {
         type: "input",
-        message: "What is the office number for the manager?",
+        message: "What is the manager's office number?",
         name: "officeNumber",
-        validate: (officeNumber) => {
-          if (officeNumber) {
+        validate: (idValidation) => {
+          if (!isNaN(idValidation)) {
+            //possibly write as (!isNaN(parseInt(idValidation)))
             return true;
           } else {
-            console.log("Office number is required.");
+            console.log("Please enter a numeric value for the manager's office number.");
             return false;
           }
         },
@@ -73,7 +74,7 @@ let employeeArray = [];
     engineerPrompt = [
       {
         type: "input",
-        message: "What is their Github username?",
+        message: "What is the engineer's Github username?",
         name: "github",
         validate: (github) => {
           if (github) {
@@ -156,7 +157,13 @@ const newEmployee = async (array) => {
       if (await createNew === true) {
         addEmployee();
       }
-      else if (await createNew === false) {}
-    });
+      else if (await createNew === false)  {
+        fs.writeFile(fileName, generateHTML(array), (error)  =>  {
+          if (error) throw error;
+          console.log("Your Team Profile has been created! Please open the index.html file in the 'dist' folder.")
+       });
+      }
+      });
 }
+
 init();
