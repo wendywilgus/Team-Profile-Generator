@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/wendywilgus/Team-Profile-Generator#readme",
   "dependencies": {
+    "bootstrap": "^5.2.2",
     "email-validator": "^2.0.4",
     "esm": "^3.2.25",
     "inquirer": "^8.2.4",

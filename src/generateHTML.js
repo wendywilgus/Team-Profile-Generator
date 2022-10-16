@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const Employee = require("../lib/employee");
 const Manager = require("../lib/manager");
+const Intern = require('/lib/intern.js')
 const cards = path.resolve(__dirname, 'src/cards');
 
 const generateHTML = Employee =>  {
@@ -59,4 +60,6 @@ const newFile = html => {
         return template.replace(pattern, value);
 
     }
-}
+};
+
+module.exports = generateHTML;
