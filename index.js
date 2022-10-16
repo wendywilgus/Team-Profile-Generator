@@ -5,9 +5,9 @@ const path = require("path");
 const newFile = path.resolve(__dirname, "dist");
 const filePath = path.join(newFile, "index.html");
 
-const Employee = require("./lib/employee");
-const Engineer = require("./lib/engineer");
-const Intern = require("./lib/intern");
+const Employee = require("./lib/employee.js");
+const Engineer = require("./lib/engineer.js");
+const Intern = require("./lib/intern.js");
 const Manager = require("./lib/manager.js");
 
 //link to script for generating HTML page
@@ -113,14 +113,16 @@ const init = () => {
 };
 
 const addEmployee = async () => {
-  await inquirer.prompt(employeeBasic).then((response) => {
-    let name = response.name;
-    let id = response.id;
-    let email = response.email;
-    let title = response.title;
-    let officeNumber;
-    let github;
-    let school;
+  await inquirer
+    .prompt(employeeBasic)
+    .then((response) => {
+      let name = response.name;
+      let id = response.id;
+      let email = response.email;
+      let title = response.title;
+      let officeNumber;
+      let github;
+      let school;
 
     if (title === "Manager") {
       inquirer.prompt(managerPrompt).then((response) => {
@@ -128,6 +130,7 @@ const addEmployee = async () => {
         let employee = new Manager(name, id, email, officeNumber, title);
         employeeArray.push(employee);
         newEmployee(employeeArray);
+        console.log("employeeArray", employeeArray);
       });
     } else if (title === "Engineer") {
       inquirer.prompt(engineerPrompt).then((response) => {
@@ -155,20 +158,20 @@ const newEmployee = async (array) => {
       message: "Do you want to add a new employee?",
     })
     .then(async (response) => {
-      console.log("response", response);
-      let createNew = response.newEmployee;
-      if ((await createNew) === true) {
+      // console.log("response", response);
+      var createNew = response.newEmployee;
+      if (await createNew === true) {
         addEmployee();
-      } else if ((await createNew) === false) {
+      } else if (await createNew === false) {
         if (!fs.existsSync(newFile)) {
           fs.mkdirSync(newFile);
         }
-        console.log("filePath", filePath);
-        console.log("array", array);
-        console.log("generateHTML(array)", generateHTML(array));
+        // console.log("filePath", filePath);
+        // console.log("array", array);
+        // console.log("generateHTML(array)", generateHTML(array));
         fs.writeFile(filePath, generateHTML(array), (error) => {
           if (error) {
-            console.log("error", error);
+            // console.log("error", error);
             return;
           }
           console.log(
