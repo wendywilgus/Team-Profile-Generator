@@ -3,7 +3,7 @@
 .jumbotron {
   background-color: #FA8132 ; /* Orange */
   color: #ffffff;
-  font: 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 body {
     display: flex;
@@ -18,7 +18,7 @@ body {
 }
 .cards {
     margin: 10px;
-    box-shadow: 5px 5px 10px rgb(88, 86, 86);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19), 5px 5px 10px rgb(88, 86, 86, 0.8);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
