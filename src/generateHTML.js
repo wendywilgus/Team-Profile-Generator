@@ -1,120 +1,107 @@
-const path = require("path");
+// const path = require("path");
 const fs = require("fs");
 // const Employee = require("../lib/employee");
 // const Manager = require("../lib/manager");
 // const Intern = require('../lib/intern')
-const cards = path.resolve(__dirname, "/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src");
-
-
-const writeManager = (manager) => {
-    // console.log("manager", manager);
-    let template = fs.readFileSync(
-      path.resolve(cards,
-        "src/manager.html"),
-      "utf8"
-    );
-    template = replacePlaceholders(template, "name", manager.getName());
-    // template = replacePlaceholders(template, "title", manager.getTitle());
-    template = replacePlaceholders(template, "email", manager.getEmail());
-    template = replacePlaceholders(template, "id", manager.getId());
-    // console.log("template", template);
-    template = replacePlaceholders(
-      template,
-      "officeNumber",
-      manager.getOfficeNumber()
-    );
-    return template;
-  };
-
-  const writeEngineer = (engineer) => {
-    let template = fs.readFileSync(
-      path.resolve(
-        cards,
-        "/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/engineer.html"
-      ),
-      "utf8"
-    );
-    template = replacePlaceholders(template, "name", engineer.getName());
-    // template = replacePlaceholders(template, "title", engineer.getTitle());
-    template = replacePlaceholders(template, "email", engineer.getEmail());
-    template = replacePlaceholders(template, "id", engineer.getId());
-    template = replacePlaceholders(template, "github", engineer.getGithub());
-    return template;
-  };
-  
-  const writeIntern = (intern) => {
-    let template = fs.readFileSync(
-      path.resolve(
-        cards,
-        "/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/cards/intern.html"
-      ),
-      "utf8"
-    );
-    template = replacePlaceholders(template, "name", intern.getName());
-    // template = replacePlaceholders(template, "title", intern.getTitle());
-    template = replacePlaceholders(template, "email", intern.getEmail());
-    template = replacePlaceholders(template, "id", intern.getId());
-    template = replacePlaceholders(template, "school", intern.getSchool());
-    return template;
-  };
-
-const replacePlaceholders = (template, placeholder, value) => {
-  console.log("replacePlaceholders", {
-    template,
-    placeholder,
-    value,
-  });
-  const pattern = new RegExp("{{ " + placeholder + " }}", "gm"); 
-  if (typeof template === "string") {
-    const output = template.replace(pattern, value);
-    console.log("output", output);
-    return output;
-  }
-  return "did not find a string";
-};
-
-const generateHTML = (Employee) => {
-  const writeHTML = [];
-
-  writeHTML.push(
-    Employee.filter((Employee) => Employee.getTitle() === "Manager").map(
-      (Manager) => writeManager(Manager)
-    )
-  );
-
-  writeHTML.push(
-    Employee.filter((Employee) => Employee.getTitle() === "Engineer").map(
-      (Engineer) => writeEngineer(Engineer)
-    )
-  );
-  writeHTML.push(
-    Employee.filter((Employee) => Employee.getTitle() === "Intern").map(
-      (Intern) => writeIntern(Intern)
-    )
-  );
-  console.log("writeHTML", writeHTML);
-  console.log("writeHTML.join", writeHTML.join(""));
-  const newfileCreated = createNewFile(writeHTML.join(""));
-  console.log("newfileCreated", newfileCreated);
-  return newfileCreated;
+// const cards = path.resolve(__dirname, "/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src");
+function createCards(team) {
+    let card = "";
+    team.forEach(employee => {
+        if(employee.getTitle() === 'Manager')   {
+            card +- `<div class="cards border-dark mb-3" style="width: 18rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">${employee.getName()}</h3>
+                        <h4 class="card-title"><i class="fa-solid fa-people-roof"></i> Manager</h4>
+                
+                    </div>
+                    <div class="card-body">
+                        <ul  class='list-group'>
+                            <li class="list-group-item" id="borderBot">ID: ${employee.getId()}</li>
+                            <li class="list-group-item" id="borderBot">Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></li>
+                            <li class="list-group-item">Office number: ${employee.getOfficeNumber()}</li>
+                        </ul>
+                    </div>
+                </div>\n`
+        } else if(employee.getTitle() === 'Engineer')  {
+            card +- `<div class="cards border-dark mb-3" style="width: 18rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">${employee.getName()}</h3>
+                        <h4 class="card-title"><i class="fa-solid fa-laptop-code"></i> Engineer</h4>
+                
+                    </div>
+                    <div class="card-body">
+                        <ul  class='list-group'>
+                            <li class="list-group-item" id="borderBot">ID: ${employee.getId()}</li>
+                            <li class="list-group-item" id="borderBot">Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></li>
+                            <li class="list-group-item"><a href="https://github.com/${employee.getGithub()}" target="_blank" rel="noopener noreferrer">${employee.getGithub()}</a></li>
+                        </ul>
+                    </div>
+                </div>\n`
+        } else if(employee.getTitle() === 'Intern')  {
+            card +- `<div class="cards border-dark mb-3" style="width: 18rem;">
+                    <div class="card-header">
+                        <h3 class="card-title">${employee.getName()}</h3>
+                        <h4 class="card-title"><i class="fa-solid fa-graduation-cap"></i> Intern</h4>
+                
+                    </div>
+                    <div class="card-body">
+                        <ul  class='list-group'>
+                            <li class="list-group-item" id="borderBot">ID: ${employee.getId()}</li>
+                            <li class="list-group-item" id="borderBot">Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></li>
+                            <li class="list-group-item">School: ${employee.getSchool}</li>
+                        </ul>
+                    </div>
+                </div>\n`
+        }
+    })
+    return card;
 };
 
 
-
-
-
-function createNewFile(html) {
-  return fs.readFileSync(
-    path.resolve(
-      cards,
-      "/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/cards/main.html"
-    ),
-    "utf8"
-  );
+function createHTML (fileName, html)    {
+    fs.writeFile(fileName, html, err   =>  {
+        if(err) {
+            console.log(err);
+        }
+        console.log(
+            "Your Team Profile has been created! Please open the index.html file in the 'dist' folder.");
+    })
 }
 
-const createHybridNewFile = (html) => {
-  return "dumb stuff goes nowhere";
-};
+function writeTeam(team)   {
+    const html = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>My Team</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/style.css"/>
+        <script src="https://kit.fontawesome.com/a4998862a7.js" crossorigin="anonymous"></script>
+       
+    </head>
+    
+    
+    <body>
+        <header class="jumbotron text-center" >
+            <h1>My Team</h1>
+        </header>
+    
+        <main class="container">
+            <div class="row">
+                <div class="employees col-12 d-flex flex-wrap justify-content-between">
+                    ${createCards(team)}
+                    
+                </div>
+            </div>
+        </main>
+        <script src="./Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/generateHTML.js"></script>
+    </body>
+    </html>`
 
-module.exports = generateHTML;
+    createHTML("./Users/wendywilgus/git/wendywilgus/Team Profile Generator/dist/index.html", html);
+}
+    
+module.exports = writeTeam;
