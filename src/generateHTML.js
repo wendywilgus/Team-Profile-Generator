@@ -1,14 +1,13 @@
-// const path = require("path");
 const fs = require("fs");
-// const Employee = require("../lib/employee");
-// const Manager = require("../lib/manager");
-// const Intern = require('../lib/intern')
-// const cards = path.resolve(__dirname, "/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src");
+const Employee = require("../lib/employee");
+const Manager = require("../lib/manager");
+const Intern = require('../lib/intern')
+
 function createCards(team) {
-    let card = "";
-    team.forEach(employee => {
-        if(employee.getTitle() === 'Manager')   {
-            card +- `<div class="cards border-dark mb-3" style="width: 18rem;">
+  let card = "";
+  team.forEach((employee) => {
+    if (employee.getTitle() === "Manager") {
+      card +=`<div class="cards border-dark mb-3" style="width: 18rem;">
                     <div class="card-header">
                         <h3 class="card-title">${employee.getName()}</h3>
                         <h4 class="card-title"><i class="fa-solid fa-people-roof"></i> Manager</h4>
@@ -21,9 +20,9 @@ function createCards(team) {
                             <li class="list-group-item">Office number: ${employee.getOfficeNumber()}</li>
                         </ul>
                     </div>
-                </div>\n`
-        } else if(employee.getTitle() === 'Engineer')  {
-            card +- `<div class="cards border-dark mb-3" style="width: 18rem;">
+                </div>\n`;
+    } else if (employee.getTitle() === "Engineer") {
+      card +=`<div class="cards border-dark mb-3" style="width: 18rem;">
                     <div class="card-header">
                         <h3 class="card-title">${employee.getName()}</h3>
                         <h4 class="card-title"><i class="fa-solid fa-laptop-code"></i> Engineer</h4>
@@ -36,9 +35,9 @@ function createCards(team) {
                             <li class="list-group-item"><a href="https://github.com/${employee.getGithub()}" target="_blank" rel="noopener noreferrer">${employee.getGithub()}</a></li>
                         </ul>
                     </div>
-                </div>\n`
-        } else if(employee.getTitle() === 'Intern')  {
-            card +- `<div class="cards border-dark mb-3" style="width: 18rem;">
+                </div>\n`;
+    } else if (employee.getTitle() === "Intern") {
+      card +=`<div class="cards border-dark mb-3" style="width: 18rem;">
                     <div class="card-header">
                         <h3 class="card-title">${employee.getName()}</h3>
                         <h4 class="card-title"><i class="fa-solid fa-graduation-cap"></i> Intern</h4>
@@ -48,28 +47,30 @@ function createCards(team) {
                         <ul  class='list-group'>
                             <li class="list-group-item" id="borderBot">ID: ${employee.getId()}</li>
                             <li class="list-group-item" id="borderBot">Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></li>
-                            <li class="list-group-item">School: ${employee.getSchool}</li>
+                            <li class="list-group-item">School: ${
+                              employee.getSchool
+                            }</li>
                         </ul>
                     </div>
-                </div>\n`
-        }
-    })
-    return card;
-};
-
-
-function createHTML (fileName, html)    {
-    fs.writeFile(fileName, html, err   =>  {
-        if(err) {
-            console.log(err);
-        }
-        console.log(
-            "Your Team Profile has been created! Please open the index.html file in the 'dist' folder.");
-    })
+                </div>\n`;
+    }
+  });
+  return card;
 }
 
-function writeTeam(team)   {
-    const html = `<!DOCTYPE html>
+function createHTML(fileName, html) {
+  fs.writeFile(fileName, html, (err) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(
+      "Your Team Profile has been created! Please open the index.html file in the 'dist' folder."
+    );
+  });
+}
+
+function writeTeam(team) {
+  const html = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <title>My Team</title>
@@ -89,19 +90,14 @@ function writeTeam(team)   {
             <h1>My Team</h1>
         </header>
     
-        <main class="container">
-            <div class="row">
-                <div class="employees col-12 d-flex flex-wrap justify-content-between">
-                    ${createCards(team)}
-                    
-                </div>
-            </div>
+        <main id="cardContainer" class="d-flex justify-content-center">
+            ${createCards(team)}
         </main>
         <script src="./Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/generateHTML.js"></script>
     </body>
-    </html>`
+    </html>`;
 
-    createHTML("./Users/wendywilgus/git/wendywilgus/Team Profile Generator/dist/index.html", html);
+  createHTML("dist/index.html", html);
 }
-    
+
 module.exports = writeTeam;

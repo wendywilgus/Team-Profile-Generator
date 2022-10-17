@@ -8,7 +8,7 @@
 body {
     display: flex;
     flex-direction: column;
-    background-image: url('./cards/background.jpg');
+    background-image: url('/Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/background.jpg');
 }
 .container {
     display: flex;

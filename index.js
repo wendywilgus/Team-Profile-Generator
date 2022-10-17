@@ -122,7 +122,6 @@ function createEngineer() {
         name: "id",
         validate: (idValidation) => {
           if (!isNaN(idValidation)) {
-            //possibly write as (!isNaN(parseInt(idValidation)))
             return true;
           } else {
             console.log("Please enter a numeric value for the engineer's id.");
@@ -207,7 +206,6 @@ function createIntern() {
         name: "id",
         validate: (idValidation) => {
           if (!isNaN(idValidation)) {
-            //possibly write as (!isNaN(parseInt(idValidation)))
             return true;
           } else {
             console.log("Please enter a numeric value for the intern's id.");
@@ -272,67 +270,3 @@ function createIntern() {
 
 module.exports = createManager;
 createManager();
-// const init = () => {
-
-//   addEmployee();
-// };
-
-// const addEmployee = async () => {
-//   await inquirer
-//     .prompt(employeeBasic)
-//     .then((response) => {
-//       let name = response.name;
-//       let id = response.id;
-//       let email = response.email;
-//       let title = response.title;
-//       let officeNumber;
-//       let github;
-//       let school;
-
-//     if (title === "Manager") {
-//       inquirer.prompt(managerPrompt).then((response) => {
-//         officeNumber = response.officeNumber;
-//         let employee = new Manager(name, id, email, officeNumber, title);
-//         employeeArray.push(employee);
-//         newEmployee(employeeArray);
-//         console.log("employeeArray", employeeArray);
-//       });
-//     } else if (title === "Engineer") {
-//       inquirer.prompt(engineerPrompt).then((response) => {
-//         github = response.github;
-//         let employee = new Engineer(name, id, email, github, title);
-//         employeeArray.push(employee);
-//         newEmployee(employeeArray);
-//       });
-//     } else if (title === "Intern") {
-//       inquirer.prompt(internPrompt).then((response) => {
-//         school = response.school;
-//         let employee = new Intern(name, id, email, school, title);
-//         employeeArray.push(employee);
-//         newEmployee(employeeArray);
-//       });
-//     }
-//   });
-// };
-
-// const newEmployee = async (array) => {
-//   await inquirer
-//     .prompt({
-//       type: "confirm", //boolean yes or no
-//       name: "newEmployee",
-//       message: "Do you want to add a new employee?",
-//     })
-//     .then(async (response) => {
-//       // console.log("response", response);
-//       var createNew = response.newEmployee;
-//       if (await createNew === true) {
-//         addEmployee();
-//       } else if (await createNew === false) {
-//         if (!fs.existsSync(newFile)) {
-//           fs.mkdirSync(newFile);
-//         }
-// console.log("filePath", filePath);
-// console.log("array", array);
-// console.log("generateHTML(array)", generateHTML(array));
-
-// init();
