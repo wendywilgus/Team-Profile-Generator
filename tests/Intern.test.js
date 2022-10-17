@@ -1,74 +1,47 @@
-const Engineer = require("../lib/engineer");
+const Intern = require("../lib/intern");
 
-describe("Engineer", ()=>   {
+describe("Intern", ()=>   {
     describe("Initialization", ()   =>  {
-        it("should check to see if there is an instance of a new Employee", () =>  {
-            const newEngineer = new Engineer();
+        it("should check to see if there is an instance of a new Intern", () =>  {
+            const newIntern = new Intern();
 
-            expect(newEngineer instanceof Engineer).toEqual(true);
+            expect(newIntern instanceof Intern).toEqual(true);
         })
-        it("should set engineer name when created", () =>  {
-            const name = "Wendy";
-            const newEngineer = new Engineer(name);
+        it("should set Intern name when created", () =>  {
+            const name = "Finn";
+            const newIntern = new Intern(name);
 
-            expect(newEngineer.name).toEqual(name);
+            expect(newIntern.name).toEqual(name);
         })
-        it("should set Engineer id when created", () =>  {
-            const id = "123";
-            const newEngineer = new Engineer(id);
+        it("should set Intern id when created", () =>  {
+            const id = "789";
+            const newIntern = new Intern(id);
 
-            expect(newEngineer.id).toEqual(id);
+            expect(newIntern.id).toEqual(id);
         })
-        it("should set Engineer email when created", () =>  {
-            const email = "wendy@gmail.com";
-            const newEngineer = new Engineer(email);
+        it("should set Intern email when created", () =>  {
+            const email = "finn@gmail.com";
+            const newIntern = new Intern(email);
 
-            expect(newEngineer.email).toEqual(email);
+            expect(newIntern.email).toEqual(email);
         })
     })
 });
 
-describe("getName", ()  =>  {
-    it("should return the name of the Engineer", () =>  {
-        const name = "Wendy";
-        const newEngineer = new Engineer(name);
+describe("school", () =>  {
+    it("should return the school of the Intern", ()    =>  {
+        const school = "UGA";
+        const newIntern = new Intern(school);
 
-        expect(newEngineer.name).toEqual(name);
-    })
-})
-
-describe("getId", ()    =>  {
-    it("should return the id of the Engineer", ()   =>  {
-        const id = "123";
-        const newEngineer = new Engineer(id);
-
-        expect(newEngineer.id).toEqual(id);
-    })
-})
-
-describe("getEmail", () =>  {
-    it("should return the email of the Engineer", ()    =>  {
-        const email = "wendy@gmail.com";
-        const newEngineer = new Engineer(email);
-
-        expect(newEngineer.email).toEqual(email);
-    })
-})
-
-describe("getGithub", () =>  {
-    it("should return the github account of the Engineer", ()    =>  {
-        const github = "wendywilgus";
-        const newEngineer = new Engineer(github);
-
-        expect(newEngineer.github).toEqual(github);
+        expect(newIntern.school).toEqual(school);
     })
 })
 
 describe("getTitle", () =>  {
-    it("should return the title of the Engineer", ()    =>  {
-        const title = "Engineer";
-        const newEngineer = new Engineer(title);
+    it("should return the title of the Intern", ()    =>  {
+        const title = "Intern";
+        const newIntern= new Intern(title);
 
-        expect(newEngineer.title).toEqual(title);
+        expect(newIntern.title).toEqual(title);
     })
 })
