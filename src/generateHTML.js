@@ -90,8 +90,10 @@ function writeTeam(team) {
             <h1>My Team</h1>
         </header>
     
-        <main id="cardContainer" class="d-flex justify-content-center">
+        <main id="cardContainer">
+            <div class="row d-flex flex-wrap justify-content-between">
             ${createCards(team)}
+            </div>
         </main>
         <script src="./Users/wendywilgus/git/wendywilgus/Team Profile Generator/src/generateHTML.js"></script>
     </body>
