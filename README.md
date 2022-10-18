@@ -7,7 +7,7 @@ This program is a Node.js command-line application that takes in information abo
 
 Solving the problems of this project taught me to use Jest to run testing, create a directory structure for organizing materials, and use command-line prompts to generate an HTML webpage.
 
-Link to sample website here: 
+[Sample HTML Page]("/Users/wendywilgus/git/wendywilgus/Team Profile Generator/Assets/SampleHTML.png")
 
 
 ## Table of Contents

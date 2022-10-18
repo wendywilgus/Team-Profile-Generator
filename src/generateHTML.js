@@ -48,7 +48,7 @@ function createCards(team) {
                             <li class="list-group-item" id="borderBot">ID: ${employee.getId()}</li>
                             <li class="list-group-item" id="borderBot">Email: <a href="mailto: ${employee.getEmail()}">${employee.getEmail()}</a></li>
                             <li class="list-group-item">School: ${
-                              employee.getSchool
+                              employee.getSchool()
                             }</li>
                         </ul>
                     </div>
