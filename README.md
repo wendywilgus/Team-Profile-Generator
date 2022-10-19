@@ -8,8 +8,8 @@ This program is a Node.js command-line application that takes in information abo
 Solving the problems of this project taught me to use Jest to run testing, create a directory structure for organizing materials, and use command-line prompts to generate an HTML webpage.
 
 The following images show how the questions appear in the terminal and the generated HTML page.
-[Terminal Questions]("/Users/wendywilgus/git/wendywilgus/Team Profile Generator/Assets/TerminalQuestions.png")
-[Sample HTML Page]("/Users/wendywilgus/git/wendywilgus/Team Profile Generator/Assets/SampleHTML.png")
+[Terminal Questions]("./Assets/TerminalQuestions.png")
+[Sample HTML Page]("./Assets/SampleHTML.png")
 [Video Demonstration](https://watch.screencastify.com/v/u5101uCoNl6kGYZ3f9tu)
 
 
