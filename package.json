@@ -6,7 +6,8 @@
   "module": "main.js",
   "directories": {
     "lib": "lib",
-    "test": "jest"
+    "test": "jest --verbose tests/*", 
+    "test:intern": "jest --verbose tests/Intern.test.js"
   },
   "scripts": {
     "test": "jest"
